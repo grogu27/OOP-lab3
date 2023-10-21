@@ -23,30 +23,37 @@ public:
     void sum_elements();
     void input_elements_in_matrix();
 
-    Matrix(int r, int c)
+    Matrix(int r, int c);
+    Matrix();
+    Matrix(int r);
+    ~Matrix();
+
+};
+
+Matrix::Matrix(int r, int c)
     {
         rows = r;
         cols = c;
         init(rows, cols);
     }
 
-    Matrix()
-    {
-        init(0, 0);
-    }
-
-    Matrix(int r)
+ Matrix::Matrix(int r)
     {
         rows = r;
         cols = r;
         init(rows, cols);
         rand_identity_matrix();
     }
-    ~Matrix() {
+
+Matrix::Matrix()
+    {
+        init(0, 0);
+    }
+
+Matrix::~Matrix() {
 		if(matrix)
 			freeMatrix();
 	}
-};
 
 void Matrix::freeMatrix() {
 	for (int i = 0; i < rows; i++) 
