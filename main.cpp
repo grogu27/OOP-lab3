@@ -11,7 +11,7 @@ private:
     int sum = 0;
     int** matrix = NULL;
 
-    void init(int , int );
+    void init();
     void freeMatrix();
 
 public:
@@ -34,20 +34,22 @@ Matrix::Matrix(int r, int c)
     {
         rows = r;
         cols = c;
-        init(rows, cols);
+        init();
     }
 
  Matrix::Matrix(int r)
     {
         rows = r;
         cols = r;
-        init(rows, cols);
+        init();
         rand_identity_matrix();
     }
 
 Matrix::Matrix()
     {
-        init(0, 0);
+        rows = 0;
+        cols = 0;
+        init();
     }
 
 Matrix::~Matrix() {
@@ -65,7 +67,7 @@ void Matrix::set(int a, int b)
         rows = a;
         cols = b;
     }
-void Matrix::init(int rows, int cols)
+void Matrix::init()
 {
     matrix = new int* [rows];
     for (size_t i = 0; i < rows; i++)
@@ -123,7 +125,7 @@ void Matrix::input_elements_in_matrix()
 int main()
 {
     Matrix M1, M2(3), M3(3, 4), M4(2, 3);
-
+    
     cout << "M2" << endl << endl;
     M2.print_matrix();
     cout << "_________________" << endl;
